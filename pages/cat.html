@@ -45,18 +45,11 @@
                     </li>
                 </ul>
             </div>
-            <div class="status-box" id="shopping-cart" data-bind="visible: type() == '0'">
-                <a href="shopcart.html"><i class="fas fa-shopping-cart"></i> Carrinho de compras <span data-bind="text: '(' + cart().length + ')', visible: cart().length > 0"></span></a>
-            </div>
             <div class="status-box" id="status-forn" data-bind="visible: type() == '1'">
                 <a href="#">
                     <i data-bind="class: 'fas fa-' + statusIcon()"></i>
                     <span data-bind="text: statusName()"></span>
                 </a>
-            </div>
-            <div class="status-box" id="status-enti" data-bind="visible: type() == '2'">
-                <i data-bind="class: 'fas fa-' + ((session.StatusId == '1') ? 'check' : 'times')"></i>
-                <span data-bind="text: entiStatus()"></span>
             </div>
         </nav>
         <!--NAVBAR END-->
