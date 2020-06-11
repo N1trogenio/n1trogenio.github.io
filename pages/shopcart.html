@@ -96,14 +96,14 @@
                     + <span data-bind="text: totalDeliv"></span>€ (portes de envio)
                 </p>
                 <label for="payment-method">Método de pagamento: </label>
-                <select id="payment-method">
-                    <option selected disabled>Escolha um método de pagamento...</option>
+                <select id="payment-method" data-bind="value: payValue">
+                    <option value="nope" selected disabled>Escolha um método de pagamento...</option>
                     <option value="cc">Cartão de crédito</option>
                     <option value="cd">Cartão de débito</option>
                 </select>
             </div>
             <div class="normal-box">
-                <button class="btn btn-large btn-primary" data-bind="attr: { disabled: !(delivStatus() > 0) || cart().length == 0}">Efetuar pedido</button>
+                <button class="btn btn-large btn-primary" data-bind="attr: { disabled: !(delivStatus() > 0) || cart().length == 0 || !selectedPayment() }">Efetuar pedido</button>
             </div>
         </div>
 

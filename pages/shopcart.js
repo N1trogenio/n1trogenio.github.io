@@ -232,6 +232,12 @@ $(document).ready(function() {
             }
         }
 
+        self.payValue = ko.observable();
+
+        self.selectedPayment = ko.computed(function() { 
+            return self.payValue() != "nope";
+        });
+
     }
 
     ko.applyBindings(new mainViewModel);
