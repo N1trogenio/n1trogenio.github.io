@@ -8,143 +8,79 @@ $(document).ready(function() {
         self.sectionList = ko.observableArray([]);
         self.filteredProducts = ko.observableArray([]);
         self.loggedOn = ko.observable(sessionStorage.getItem("loggedOn") == 'true');
+        self.session = ko.observable(JSON.parse(sessionStorage.getItem("session")));
+
+        for (i = 0; i < self.session().Products.length; i++) {
+            if (!self.sectionList().includes(self.session().Products[i].Sect)) {
+                self.sectionList.push(self.session().Products[i].Sect);
+            }
+        }
+        
+        self.filteredProducts(self.session().Products);
+
         self.type = ko.observable();
-        self.email = ko.observable(sessionStorage.getItem("sessionEmail"));
-        self.cart = ko.observableArray(JSON.parse(sessionStorage.getItem("cart")));
-        self.session = ko.observable({
-            "Name": "",
-            "StatusId": "",
-            "Address": "",
-            "Profile": {},
-            "Hour": {
-                "Except": []
-            },
-            "Favorites": {
-                "Product": [],
-                "Provider": []
-            },
-            "Products": []
-
-        });
-        self.accountName = ko.observable();
-
-        self.statusIcon = ko.pureComputed(function() {
-            var res;
-            switch (self.session().StatusId) {
-                case "0": case "-1": case "-2": case "-3":
-                    res = "times";
-                    break;
-                case "1":
-                    res = "times";
-                    break;
-                case "2":
-                    res = "question";
-                    break;
-                case "3":
-                    res = "clock";
-                    break;
-                case "4":
-                    res = "check";
-            }
-            return res;
-        });
-
-        self.statusName = ko.pureComputed(function() {
-            var res;
-            switch (self.session().StatusId) {
-                case "0":
-                    res = "Sem perfil";
-                    break;
-                case "1":
-                    res = "Não confirmado";
-                    break;
-                case "2":
-                    res = "Catálogo inativo";
-                    break;
-                case "3":
-                    res = "Catálogo submetido";
-                    break;
-                case "4":
-                    res = "Ativo";
-                    break;
-                case "-1":
-                    res = "Email não confirmado";
-                    break;
-                case "-2":
-                    res = "Perfil rejeitado";
-                    break;
-                case "-3":
-                    res = "Catálogo rejeitado";
-            }
-            return res;
-        });
-
         if (self.loggedOn()) {
             self.type(sessionStorage.getItem("sessionType"));
-            var src;
-            switch (self.type()) {
-                case '0':
-                    src = 'clie/clie.json';
-                    break;
-                case '1':
-                    src = 'forn/forn.json';
-                    break;
-                case '2':
-                    src = 'enti/enti.json';
+            var res;
+            if (self.session().StatusId == '-1') {
+                res = self.session().Email;
             }
-            $.ajax({
-                url: '../data/' + src,
-                method: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                    for (i = 0; i < data.length; i++) {
-                        if (data[i].Email == self.email()) {
-                            self.session(data[i]);
-                            console.log(self.session());
-                            var res;
-                            if (self.session().StatusId == '-1') {
-                                res = self.session().Email;
-                            }
-                            else {
-                                switch (self.type()) {
-                                    case "0":
-                                        res = self.session().Name;
-                                        break;
-                                    case "1":
-                                        if (self.session().StatusId > -3 && self.session().StatusId < 2) {
-                                            res = self.session().Email;
-                                        }
-                                        else {
-                                            res = self.session().Profile.Name;
-                                        }
-                                        break;
-                                    case "2":
-                                        res = self.session().Email;
-                                }
-                            }
-                            
-                            $("#login-name").text('Conta (' + res + ')');
-
-                            for (j = 0; j < data[i].Products.length; j++) {
-                                if (!self.sectionList().includes(data[i].Products[j].Sect)) {
-                                    self.sectionList.push(data[i].Products[j].Sect);
-                                }
-                            }
-                            
-                            self.filteredProducts(self.session().Products);
-
-                            break;
+            else {
+                switch (self.type()) {
+                    case "0":
+                        res = self.session().Name;
+                        break;
+                    case "1":
+                        if (self.session().StatusId > -3 && self.session().StatusId < 2) {
+                            res = self.session().Email;
                         }
-                    }
-                },
-                error: function() {
-                    console.log("Erro no ajax...");
+                        else {
+                            res = self.session().Profile.Name;
+                        }
+                        break;
+                    case "2":
+                        res = self.session().Email;
                 }
-            });
+            }
+            
+            $("#login-name").text('Conta (' + res + ')');
         }
         else {
             self.type("-1");
         }
+        self.cart = ko.observableArray(JSON.parse(sessionStorage.getItem("cart")));
+        self.accountName = ko.observable();
+
+        self.statusIcon = ko.pureComputed(function() {
+            if (self.loggedOn()) {
+                switch (self.session().StatusId) {
+                    case "0": case "-1": case "-2": case "-3": return "times";
+                    case "1": return "times";
+                    case "2": return "question";
+                    case "3":return "clock";
+                    case "4": return "check";
+                    default: return "ERROR.STATUS";
+                }
+            }
+            return "";
+        });
+
+        self.statusName = ko.pureComputed(function() {
+            if (self.loggedOn()) {
+                switch (self.session().StatusId) {
+                    case "0": return "Sem perfil";
+                    case "1": return "Não confirmado";
+                    case "2": return "Catálogo inativo";
+                    case "3": return "Catálogo submetido";
+                    case "4": return "Ativo";
+                    case "-1": return "Email não confirmado";
+                    case "-2": return "Perfil rejeitado";
+                    case "-3": return "Catálogo rejeitado";
+                    default: return 'ERROR.STATUS';
+                }
+            }
+            return "";
+        });
 
         /* END OF STARTER CODE */
 
