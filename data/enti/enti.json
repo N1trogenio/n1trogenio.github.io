@@ -1,0 +1,14 @@
+[
+    {
+        "Email": "entregador.inf@dom.pt",
+        "StatusId": "0",
+        "Id": 99,
+        "Area": "Aveiro",
+        "Profile": {
+            "Name": "Retalho do João",
+            "Desc": "Retalho do João. Localizado em Aveiro. Vendemos variados produtos.",
+            "Photo": "100.jpg",
+            "Cont": "[contactos]"
+        }
+    }
+]

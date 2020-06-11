@@ -1,0 +1,16 @@
+[
+    {
+        "Email": "um.cliente@dom.pt",
+        "StatusId": "0",
+        "Name": "João",
+        "Cont": "[contacto]",
+        "Favorites": {
+            "Product": [
+                "Maçã Fuji"
+            ],
+            "Provider": [
+                "Quintanda Jesus"
+            ]
+        }
+    }
+]

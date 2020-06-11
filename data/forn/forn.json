@@ -1,0 +1,180 @@
+[
+    {
+        "Email": "um.fornecedor@dom.pt",
+        "StatusId": "4",
+        "Address": "Aveiro",
+        "Id": "100",
+        "Logo": "100.png",
+        "Profile": {
+            "Name": "Retalho do João",
+            "Desc": "Retalho do João. Localizado em Aveiro. Vendemos variados produtos.",
+            "Photo": "100.jpg",
+            "Cont": "[contactos]"
+        },
+        "Cat": "Tudo",
+        "Products": [
+            {
+                "Name": "Maçã Fuji",
+                "Quant": "20",
+                "Price": "1.49€/kg",
+                "Disc": "10",
+                "Sect": "Vermelha",
+                "Id": "0"
+            },
+            {
+                "Name": "Laranja",
+                "Quant": "42",
+                "Price": "1.99€/kg",
+                "Disc": "0",
+                "Sect": "Laranja",
+                "Id": "1"
+            }
+        ],
+        "Hour": {
+            "Week": [
+                {
+                    "Start": "09:00",
+                    "End": "20:00"
+                },
+                {
+                    "Start": "09:00",
+                    "End": "20:00"
+                },
+                {
+                    "Start": "09:00",
+                    "End": "20:00"
+                },
+                {
+                    "Start": "09:00",
+                    "End": "20:00"
+                },
+                {
+                    "Start": "09:00",
+                    "End": "20:00"
+                },
+                {
+                    "Start": "09:00",
+                    "End": "20:00"
+                },
+                {
+                    "Start": "00:00",
+                    "End": "00:00"
+                }
+            ],
+            "Except": [
+                "24/12",
+                "25/12",
+                "10/06"
+            ]
+        }
+    },
+    {
+        "Email": "outro.fornecedor@dom.pt",
+        "StatusId": "4",
+        "Address": "Aveiro",
+        "Id": "101",
+        "Logo": "101.png",
+        "Profile": {
+            "Name": "Quintanda Jesus",
+            "Desc": "Aqui só temos comida!",
+            "Photo": "101.jpg",
+            "Cont": "[contactos diferentes]"
+        },
+        "Cat": "Refeição",
+        "Products": [
+            {
+                "Name": "Pastel de nata",
+                "Quant": "50",
+                "Price": "2.79€/kg",
+                "Disc": "20",
+                "Sect": "",
+                "Id": "2"
+            }
+        ],
+        "Hour": {
+            "Week": [
+                {
+                    "Start": "08:30",
+                    "End": "21:00"
+                },
+                {
+                    "Start": "08:30",
+                    "End": "21:00"
+                },
+                {
+                    "Start": "00:00",
+                    "End": "00:00"
+                },
+                {
+                    "Start": "08:30",
+                    "End": "21:00"
+                },
+                {
+                    "Start": "08:30",
+                    "End": "21:00"
+                },
+                {
+                    "Start": "08:30",
+                    "End": "21:00"
+                },
+                {
+                    "Start": "08:30",
+                    "End": "21:00"
+                }
+            ],
+            "Except": [
+                "24/12",
+                "25/12"
+            ]
+        }
+    },
+    {
+        "Email": "maisum.fornecedor@dom.pt",
+        "Verified": "false",
+        "StatusId": "-1",
+        "Address": "",
+        "Id": "102",
+        "Logo": "",
+        "Profile": {
+            "Name": "",
+            "Desc": "",
+            "Photo": "",
+            "Cont": ""
+        },
+        "Cat": "",
+        "Products": [],
+        "Hour": {
+            "Week": [
+                {
+                    "Start": "",
+                    "End": ""
+                },
+                {
+                    "Start": "",
+                    "End": ""
+                },
+                {
+                    "Start": "",
+                    "End": ""
+                },
+                {
+                    "Start": "",
+                    "End": ""
+                },
+                {
+                    "Start": "",
+                    "End": ""
+                },
+                {
+                    "Start": "",
+                    "End": ""
+                },
+                {
+                    "Start": "",
+                    "End": ""
+                }
+            ],
+            "Except": []
+        }
+    }
+]

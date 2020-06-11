@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CityMarket | Catálogo</title>
+        
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../lib/font-awesome/css/all.min.css" />
+        <link rel="stylesheet" href="../css/ie10mobile.css" />
+        <link rel="stylesheet" href="../css/styling.css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        
+    </head>
+    <body>  
+        <!--NAVBAR START-->
+        <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color: white; font-size: 1.4em"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Página Inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="markets.html">Mercados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Suporte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bind="attr: { href: (loggedOn()) ? 'account.html' : 'loginpage.html' }">
+                            <span id="login-name">Iniciar sessão</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="status-box" id="shopping-cart" data-bind="visible: type() == '0'">
+                <a href="shopcart.html"><i class="fas fa-shopping-cart"></i> Carrinho de compras <span data-bind="text: '(' + cart().length + ')', visible: cart().length > 0"></span></a>
+            </div>
+            <div class="status-box" id="status-forn" data-bind="visible: type() == '1'">
+                <a href="#">
+                    <i data-bind="class: 'fas fa-' + statusIcon()"></i>
+                    <span data-bind="text: statusName()"></span>
+                </a>
+            </div>
+            <div class="status-box" id="status-enti" data-bind="visible: type() == '2'">
+                <i data-bind="class: 'fas fa-' + ((session.StatusId == '1') ? 'check' : 'times')"></i>
+                <span data-bind="text: entiStatus()"></span>
+            </div>
+        </nav>
+        <!--NAVBAR END-->
+        <div class="before-load">
+            <div><h1 class="title">Adicionar</h1></div>
+            <div><h2 class="subtitle">Produtos</h2></div>
+            <div class="section-box bordered" style="margin: auto">
+                <form>
+                    <div class="normal-box">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td><h5><label for="form-name">Nome:</label></h5></td>
+                                    <td><input class="long" id="form-name" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td><h5><label for="form-price">Preço:</label></h5></td>
+                                    <td><input class="long" id="form-price" type="number" min="0" step="0.01">€</td>
+                                    <td>
+                                        <select id="form-unit">
+                                            <option value="u">Unidade</option>
+                                            <option value="kg">Kg (Quilograma)</option>
+                                            <option value="L">L (Litro)</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><h5><label for="form-quant">Quantidade:</label></h5></td>
+                                    <td><input class="long" id="form-quant" type="number" min="0"></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td><h5><label for="form-disc">Desconto:</label></h5></td>
+                                    <td><input class="long" id="form-disc" type="number" min="0" max="100">%</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <button class="btn btn-primary" id="btn-add-product" type="submit" data-bind="click: function() { addProduct() }">Adicionar produto</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>        
+            </div>
+            <br>
+            <div><h2 class="subtitle">Secções</h2></div>
+            <div class="section-box bordered">
+                <div class="sections-grid">
+                    <div class="List">
+                        <table class="table bordered">
+                            <tbody data-bind="foreach: sectionList">
+                                <tr class="bordered">
+                                    <td class="bordered">
+                                        <span data-bind="text: $data"></span>
+                                        <div class="floated-right">
+                                            <button class="btn btn-primary" data-bind="click: function() { $root.removeSect($data) }">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="Calendar">
+                        <div class="normal-box">
+                            <h5><label for="section-name">Nome: </label><input id="section-name" type="text"></h5>
+                        </div>
+                    </div>
+                    <div class="Button">
+                        <div class="normal-box">
+                            <button class="btn btn-primary" id="btn-add-section" type="button" data-bind="click: function() { $root.addSect() }">Adicionar secção</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div><h1 class="title">Catálogo</h1></div>
+            <div class="normal-box">
+                <select id="section-filter" data-bind="options: $root.sectionList, optionsCaption: 'Selecione uma secção para filtrar...'"></select>
+            </div>
+            <div class="section-box bordered">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Desconto</th>
+                            <th scope="col">Secção</th>
+                            <th scope="col">Remoção</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: filteredProducts">
+                        <tr>
+                            <td><span data-bind="text: $data.Name"></span></td>
+                            <td><span data-bind="text: $data.Price"></span></td>
+                            <td><span data-bind="text: $data.Quant"></span></td>
+                            <td><span data-bind="text: $data.Disc"></span>%</td>
+                            <td>
+                                <select data-bind="options: $root.sectionList, optionsCaption: 'Anterior: ' + $data.Sect, attr: { id: 'section-change-' + $index() }, event: { change: $root.changeSection($element, $data) }"></select>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" data-bind="click: function() { $root.removeProduct($data) }">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="normal-box">
+                <button class="btn btn-large btn-primary">Enviar para análise</button>
+            </div>   
+        </div>
+
+        <script src="../lib/jquery/jquery-3.4.1.min.js"></script>
+        <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../lib/knockout/knockout-3.5.1.js"></script>
+        <script src="cat.js"></script>
+    </body>
+</html>

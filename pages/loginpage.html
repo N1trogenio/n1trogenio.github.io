@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CityMarket | Iniciar sessão</title>
+        
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../lib/font-awesome/css/all.min.css" />
+        <link rel="stylesheet" href="../css/ie10mobile.css" />
+        <link rel="stylesheet" href="../css/styling.css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        
+    </head>
+    <body>
+        <!--MODAL CLIENTE-->
+        <div class="modal fade" id="modalClie" tabindex="-1" role="dialog" aria-labelledby="modalClieTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalClieTitle">Registar como cliente</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <fieldset>
+                            <legend>Conta</legend>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td><label for="clie-email">Email: </label></td>
+                                    <td><input type="email" id="clie-email" style="width: 100%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="clie-password1">Password: </label></td>
+                                    <td><input type="password" id="clie-password1" style="width: 100%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="clie-password2">Confirmar Password: </label></td>
+                                    <td><input type="password" id="clie-password2" style="width: 100%"></td>
+                                </tr>
+                                <tr><td><span class="error" id="clie-password-error">Passwords não coincidem!</span></td></tr>
+                            </table>
+                            <br>
+                            <div style="float: right">
+                                <button id="reg-clie" class="btn btn-primary" type="button">Confirmar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!--MODAL FORNECEDOR-->
+        <div class="modal fade" id="modalForn" tabindex="-1" role="dialog" aria-labelledby="modalFornTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalFornTitle">Registar como fornecedor</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <fieldset>
+                            <legend>Conta</legend>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td><label for="forn-email">Email: </label></td>
+                                    <td><input type="email" id="forn-email" style="width: 100%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="forn-password1">Password: </label></td>
+                                    <td><input type="password" id="forn-password1" style="width: 100%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="forn-password2">Confirmar Password: </label></td>
+                                    <td><input type="password" id="forn-password2" style="width: 100%"></td>
+                                </tr>
+                                <tr><td><span class="error" id="forn-password-error">Passwords não coincidem!</span></td></tr>
+                            </table>
+                            <br>
+                            <div style="float: right">
+                                <button id="reg-forn" class="btn btn-primary" type="button">Confirmar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!--MODAL ENTREGADOR INFORMAL-->
+        <div class="modal fade" id="modalEnti" tabindex="-1" role="dialog" aria-labelledby="modalEntiTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalEntiTitle">Registar como entregador informal</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <fieldset>
+                            <legend>Conta</legend>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td><label for="enti-email">Email: </label></td>
+                                    <td><input type="email" id="enti-email" style="width: 100%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="enti-password1">Password: </label></td>
+                                    <td><input type="password" id="enti-password1" style="width: 100%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="enti-password2">Confirmar Password: </label></td>
+                                    <td><input type="password" id="enti-password2" style="width: 100%"></td>
+                                    <tr><td><span class="error" id="enti-password-error">Passwords não coincidem!</span></td></tr>
+                                </tr>
+                            </table>
+                            <br>
+                            <div style="float: right">
+                                <button id="reg-enti" class="btn btn-primary" type="button">Confirmar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!--NAVBAR START-->
+        <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars" style="color: white; font-size: 1.4em"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Página Inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="markets.html">Mercados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Suporte</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" data-bind="attr: { href: (loggedOn()) ? 'account.html' : 'loginpage.html' }">
+                            <span id="login-name">Iniciar sessão</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--NAVBAR END-->
+        <div id="title-box">
+            <h1 class="title">Iniciar sessão</h1>
+        </div>
+
+        <div class="container-fluid" style="margin-top: 5vh">
+            <div class="row row-section row-section-sm">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <div>
+                        <div class="img-container">
+                            <img src="../images/fruit.jpg">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas mollitia voluptatibus quaerat, aperiam architecto asperiores, quisquam suscipit sit laudantium culpa eaque nostrum, iste et nihil! Natus quas quod distinctio esse.</p>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5">
+                    <div>
+                        <form method="post">
+                            <h1>Login</h1>
+                            <br>
+                            <table style="width: 100%; border-spacing:0 20px; border-collapse: separate">
+                                <tr>
+                                    <td><h4><label for="form-email">Email: </label></h4></td>
+                                    <td><input type="email" id="form-email" style="width: 100%"></td>
+                                </tr>
+                                <tr><td><span class="error" id="form-email-error">E-mail não registado!</span></td></tr>
+                                <tr>
+                                    <td><h4><label for="form-password">Password: </label></h4></td>
+                                    <td><input type="password" id="form-password" style="width: 100%"></td>
+                                </tr>
+                                <tr><td><span class="error" id="form-password-error">Password incorreta!</span></td></tr>
+                            </table>
+                            <br>
+                            <div style="float: right">
+                                <button id="form-confirm" class="btn btn-primary" type="button">Confirmar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        
+        <br><hr><br>
+        <h1>Não possui uma conta?</h1>
+        <p>Escolha uma de entre 3 possíveis contas abaixo.</p>
+        <br>
+
+            <div class="row row-section row-section-m">
+                <div class="col-sm-1"></div>
+                <div class="col-sm hover-anim">
+                    <a data-toggle="modal" data-target="#modalClie">
+                        <div>
+                            <img src="../images/fruit.jpg">
+                            <p class="subtitle-center">Cliente</p>
+                            <p style="text-align:center">Qualquer pessoa que queira fazer compras.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm hover-anim">
+                    <a data-toggle="modal" data-target="#modalForn">
+                        <div>
+                            <img src="../images/fruit.jpg">
+                            <p class="subtitle-center">Fornecedor</p>
+                            <p style="text-align:center">Responsável que fornece os seus produtos para venda.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm hover-anim">
+                    <a data-toggle="modal" data-target="#modalEnti">
+                        <div>
+                            <img src="../images/fruit.jpg">
+                            <p class="subtitle-center">Entregador Informal</p>
+                            <p style="text-align:center">Entregador encarregue de entregas excecionais ou urgentes.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+        
+        <script src="../lib/jquery/jquery-3.4.1.min.js"></script>
+        <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../lib/knockout/knockout-3.5.1.js"></script>
+        <script src="loginpage.js"></script>
+    </body>
+</html>

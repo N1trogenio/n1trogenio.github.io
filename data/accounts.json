@@ -1,0 +1,27 @@
+[
+    {
+        "username": "um.cliente@dom.pt",
+        "password": "1234",
+        "type": "0"
+    },
+    {
+        "username": "um.fornecedor@dom.pt",
+        "password": "4321",
+        "type": "1"
+    },
+    {
+        "username": "entregador.inf@dom.pt",
+        "password": "0000",
+        "type": "2"
+    },
+    {
+        "username": "outro.fornecedor@dom.pt",
+        "password": "abcd",
+        "type": "1"
+    },
+    {
+        "username": "maisum.fornecedor@dom.pt",
+        "password": "dcba",
+        "type": "1"
+    }
+]
