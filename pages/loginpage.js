@@ -78,7 +78,7 @@ $(document).ready(function(e) {
 
     $('#reg-clie').on('click', function() {
         $("#clie-password-error").css("visibility", "hidden");
-        if ($('#clie-password1').val() == $('#clie-password2').val()) {
+        if ($('#clie-password1').val() == $('#clie-password2').val() && $('#clie-password1').val().length != 0) {
             var sess = {
                 "Email": $('#clie-email').val(),
                 "StatusId": '-1',
@@ -101,7 +101,7 @@ $(document).ready(function(e) {
 
     $('#reg-forn').on('click', function() {
         $("#forn-password-error").css("visibility", "hidden");
-        if ($('#forn-password1').val() == $('#forn-password2').val()) {
+        if ($('#forn-password1').val() == $('#forn-password2').val() && $('#forn-password1').val().length != 0) {
             var sess = {
                 "Email": $('#forn-email').val(),
                 "StatusId": "-1",
@@ -162,7 +162,7 @@ $(document).ready(function(e) {
 
     $('#reg-enti').on('click', function() {
         $("#enti-password-error").css("visibility", "hidden");
-        if ($('#enti-password1').val() == $('#enti-password2').val()) {
+        if ($('#enti-password1').val() == $('#enti-password2').val() && $('#enti-password1').val().length != 0) {
             var sess = {
                 "Email": $('#enti-email').val(),
                 "StatusId": "-1",
