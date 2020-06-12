@@ -55,7 +55,7 @@
                 </a>
             </div>
             <div class="status-box" id="status-enti" data-bind="visible: type() == '2'">
-                <i data-bind="class: 'fas fa-' + ((session.StatusId == '1') ? 'check' : 'times')"></i>
+                <i data-bind="class: 'fas fa-' + ((entiDisp() == '1') ? 'check' : 'times')"></i>
                 <span data-bind="text: entiStatus()"></span>
             </div>
         </nav>
@@ -197,20 +197,20 @@
                         <a class="hyperlink" data-bind="class: (session().StatusId < 1 && session().StatusId != '-2') ? 'disabled' : '', attr: { href: (session().StatusId < 1 && session().StatusId != '-2') ? '#' : 'cat.html' }">Ir para catálogo</a>
                     </div>
                 </div>
-                <div data-bind="visible: type() == '2'">
+                <div data-bind="visible: type() == '2' && entiDisp() != '-1'">
                     <div><h1 class="title">Entregas</h1></div>
                     <div class="section-box bordered" style="margin: auto">
                         <div class="normal-box">
                             <p>Disponibilidade para entregas: 
-                                <span data-bind="style: { color: (session.StatusId == '1') ? 'green' : 'red' }">
-                                    <i data-bind="class: 'fas fa-' + (session.StatusId == '1') ? 'check' : 'times'"></i>
+                                <span data-bind="style: { color: ($root.entiDisp() == '1') ? 'green' : 'red' }">
+                                    <i data-bind="class: 'fas fa-' + ($root.entiDisp() == '1') ? 'check' : 'times'"></i>
                                     <span data-bind="text: entiStatus()"></span>
                                 </span>
                             </p>
                         </div>
                         <div class="normal-box">
                             <button class="btn btn-large btn-primary" data-bind="click: function() { $root.confirmDisp() }, 
-                            text: (session().StatusId == '0') ? 'Disponibilizar-me para entregas' : 'Desativar entregas'"></button>
+                            text: ($root.entiDisp() == '0') ? 'Disponibilizar-me para entregas' : 'Desativar entregas'"></button>
                         </div>
                     </div>
                 </div>

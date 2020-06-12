@@ -55,7 +55,7 @@
                 </a>
             </div>
             <div class="status-box" id="status-enti" data-bind="visible: type() == '2'">
-                <i data-bind="class: 'fas fa-' + ((session.StatusId == '1') ? 'check' : 'times')"></i>
+                <i data-bind="class: 'fas fa-' + ((entiDisp() == '1') ? 'check' : 'times')"></i>
                 <span data-bind="text: entiStatus()"></span>
             </div>
         </nav>

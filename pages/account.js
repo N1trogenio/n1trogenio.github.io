@@ -16,6 +16,7 @@ $(document).ready(function() {
         self.loggedOn = ko.observable(sessionStorage.getItem("loggedOn") == 'true');
         self.session = ko.observable(JSON.parse(sessionStorage.getItem("session")));
         self.type = ko.observable();
+        self.entiDisp = ko.observable(self.session().StatusId);
         if (self.loggedOn()) {
             self.type(sessionStorage.getItem("sessionType"));
             var res;
@@ -36,7 +37,12 @@ $(document).ready(function() {
                         }
                         break;
                     case "2":
-                        res = self.session().Email;
+                        if (self.entiDisp() == '-1') {
+                            res = self.session().Email;
+                        }
+                        else {
+                            res = self.session().Profile.Name;
+                        }
                 }
             }
             
@@ -106,7 +112,7 @@ $(document).ready(function() {
 
         self.entiStatus = ko.pureComputed(function () {
             if (self.loggedOn()) {
-                switch (self.session().StatusId) {
+                switch (self.entiDisp()) {
                     case '-1': return 'Email não confirmado';
                     case '0': return 'Inativo';
                     case '1': return 'Disponível';
@@ -119,16 +125,21 @@ $(document).ready(function() {
         /* END OF STARTER CODE */
 
         self.confirmDisp = function() {
-            if (self.session().StatusId == '0') {
+            console.log(self.entiDisp());
+            if (self.entiDisp() == '0') {
                 if (confirm("Tem a certeza de que pretende efetuar entregas urgentes? (incumprimento da entrega implica uma penalização)")) {
+                    self.entiDisp('1');
                     self.session().StatusId = '1';
                 }
             }
             else {
+                self.entiDisp('0');
                 self.session().StatusId = '0';
             }
-            
+            sessionStorage.setItem("session", JSON.stringify(self.session()));
         }
+
+        
 
     }
 

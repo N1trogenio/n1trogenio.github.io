@@ -5,6 +5,7 @@ $(document).ready(function() {
         self.loggedOn = ko.observable(sessionStorage.getItem("loggedOn") == 'true');
         self.session = ko.observable(JSON.parse(sessionStorage.getItem("session")));
         self.type = ko.observable();
+        self.entiDisp = ko.observable(self.session().StatusId);
         if (self.loggedOn()) {
             self.type(sessionStorage.getItem("sessionType"));
             var res;
