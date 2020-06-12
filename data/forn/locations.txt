@@ -1,3 +1,0 @@
-lat	lon	title	description	icon	iconSize	iconOffset
-40.637786	-8.6434525	CMA	Câmara Municipal de Aveiro	/images/marker_red.png	24,24 	12,-12
-40.6699851	-8.6582032	Title	TwoDescription two	/images/marker_blue.png	24,24	-12,-12

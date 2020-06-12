@@ -27,7 +27,12 @@ $(document).ready(function() {
                         }
                         break;
                     case "2":
-                        res = self.session().Email;
+                        if (self.entiDisp() == '-1') {
+                            res = self.session().Email;
+                        }
+                        else {
+                            res = self.session().Profile.Name;
+                        }
                 }
             }
             

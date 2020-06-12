@@ -30,7 +30,12 @@ $(document).ready(function() {
                         }
                         break;
                     case "2":
-                        res = self.session().Email;
+                        if (self.entiDisp() == '-1') {
+                            res = self.session().Email;
+                        }
+                        else {
+                            res = self.session().Profile.Name;
+                        }
                 }
             }
             
@@ -280,12 +285,6 @@ $(document).ready(function() {
                           new ol.layer.Tile({
                             source: new ol.source.OSM()
                           }),
-                          /*
-                          new ol.layer.Text("Fornecedores", {
-                            location: "../data/forn/locations.txt",
-                            projection: map.displayProjection
-                          })
-                          */
                         ],
                         view: new ol.View({
                           center: [-938799.8052258492, 4928698.977435714],
@@ -295,6 +294,52 @@ $(document).ready(function() {
                           minZoom: 7,
                         })
                     });
+                    var geoArr = [];
+                    for (i = 0; i < self.fornList().length; i++) {
+                        var tempFeature = new ol.Feature({
+                            geometry: new ol.geom.Point([self.fornList()[i].Geo[0],self.fornList()[i].Geo[1]]),
+                            name: self.fornList()[i].Profile.Name
+                        });
+                        var iconStyle = new ol.style.Style({
+                            image: new ol.style.Icon({
+                                anchor: [150, 300],
+                                anchorXUnits: 'pixels',
+                                anchorYUnits: 'pixels',
+                                src: '../data/stock/marker.png',
+                                scale: 0.1
+                            }),
+                            text: new ol.style.Text({
+                                text: self.fornList()[i].Profile.Name,
+                                fill: new ol.style.Fill({color: 'white'}),
+                                stroke: new ol.style.Stroke({color: 'black', width: 7}),
+                                offsetY: 10
+                            })
+                        });
+                        tempFeature.setStyle(iconStyle);
+                        geoArr.push(tempFeature);
+                    }
+                    var vectorSource = new ol.source.Vector({
+                        features: geoArr
+                    });
+                    var markerVectorLayer = new ol.layer.Vector({
+                        source: vectorSource,
+                    });
+                    map.addLayer(markerVectorLayer);
+                    map.on('click', function(evt) {
+                        var feature = map.forEachFeatureAtPixel(evt.pixel,
+                            function(feature) {
+                                return feature;
+                        });
+                        if (feature) {
+                            var coordinates = feature.getGeometry().getCoordinates();
+                            for (i = 0; i< self.fornList().length; i++) {
+                                if (self.fornList()[i].Geo[0] == coordinates[0] && self.fornList()[i].Geo[1] == coordinates[1]) {
+                                    self.morphDetails(self.fornList()[i]);
+                                    break;
+                                }
+                            }
+                        }
+                    })
                 }
             }
         }
@@ -399,13 +444,11 @@ $(document).ready(function() {
                     dayId = 6;
             }
             res = res.filter(function(val) {
-                console.log(val);
                 return (val.Profile.Name.toLowerCase().includes(filters[0]) || filters[0].length == 0)
                     && ((val.Hour.Week[dayId].Start <= filters[1] && val.Hour.Week[dayId].End >= filters[2]) || filters[3]=="any")
                     && (val.Address.toLowerCase().includes(filters[4]) || filters[4].length == 0)
                     && (val.Cat == filters[5] || filters[5] == 'any');
             });
-            console.log(res);
             self.filteredFornList(res);
         }
 
@@ -479,4 +522,5 @@ $(document).ready(function() {
     ko.applyBindings(new marketsViewModel);
 
     $("#before-load").css("display", "initial");
+
 });

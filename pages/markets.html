@@ -72,7 +72,7 @@
                             <h1 class="title" data-bind="text: $data.Profile.Name"></h1>
                         </div>
                         <i><h6 class="subtext" data-bind="text: 'Mercado #' + $data.Id"></h6></i>
-                        <button class="btn btn-primary" type="button" data-bind="click: function() { $root.favoriteForn($data) }, visible: $root.loggedOn" style="margin-left: 50px;">
+                        <button class="btn btn-primary" type="button" data-bind="click: function() { $root.favoriteForn($data) }, visible: $root.loggedOn && $root.type() == '0'" style="margin-left: 50px;">
                             <i style="transition: 0.25s" data-bind="attr: { id: $data.Id, class: 'fas fa-star ' + ($root.isFavoriteForn($data) ? 'favorited' : '') }"></i>
                         </button>
                     </div>
@@ -149,7 +149,7 @@
                                 </div>
                             </div>
                             <span data-bind="text: $data.Name" style="text-transform: capitalize"></span>
-                            <div data-bind="visible: $root.loggedOn">
+                            <div data-bind="visible: $root.loggedOn && $root.type() == '0'">
                                 <input type="number" min="0" data-bind="attr: { id: 'qnt' + $data.Id, max: $data.Quant }" style="width: 50%">
                                 <button class="btn btn-primary xsmall-circle bot-right" type="button" data-bind="click: function() { $root.addCart($data) }"><i class="fas fa-plus"></i></button>
                             </div>

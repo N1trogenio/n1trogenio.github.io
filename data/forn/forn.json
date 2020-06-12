@@ -3,6 +3,7 @@
         "Email": "um.fornecedor@dom.pt",
         "StatusId": "4",
         "Address": "Aveiro",
+        "Geo": [-948125.1226766407, 4966611.743465161],
         "Id": "100",
         "Logo": "100.png",
         "Profile": {
@@ -72,6 +73,7 @@
         "Email": "outro.fornecedor@dom.pt",
         "StatusId": "4",
         "Address": "Aveiro",
+        "Geo": [-946596.3821109371, 4940011.657621919],
         "Id": "101",
         "Logo": "101.png",
         "Profile": {
@@ -132,6 +134,7 @@
         "Email": "maisum.fornecedor@dom.pt",
         "Verified": "false",
         "StatusId": "-1",
+        "Geo": [0, 0],
         "Address": "",
         "Id": "102",
         "Logo": "",
