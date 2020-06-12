@@ -8,5 +8,5 @@ A "base de dados" é básica e estática, estando presente na pasta "data".
 No ficheiro "accounts.json" estão as informações das contas registadas na plataforma, 
 com as quais se pode efetuar login e testar as funcionalidades implementadas.
 
-Esta iteração foi construída para ser utilizada em website e não em dispositivos móveis.
+Esta iteração foi construída para ser utilizada em desktop e não em dispositivos móveis.
 São utilizadas as bibliotecas jQuery, KnockoutJS, Bootstrap e Font Awesome.
