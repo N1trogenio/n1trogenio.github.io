@@ -5,9 +5,10 @@ $(document).ready(function() {
         self.loggedOn = ko.observable(sessionStorage.getItem("loggedOn") == 'true');
         self.session = ko.observable(JSON.parse(sessionStorage.getItem("session")));
         self.type = ko.observable();
-        self.entiDisp = ko.observable(self.session().StatusId);
+        self.entiDisp = ko.observable();
         if (self.loggedOn()) {
             self.type(sessionStorage.getItem("sessionType"));
+            self.entiDisp(self.session().StatusId);
             var res;
             if (self.session().StatusId == '-1') {
                 res = self.session().Email;
